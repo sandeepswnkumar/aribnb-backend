@@ -194,10 +194,13 @@ app.post('/booking',async (req,res)=>{
 
 });
 
-
+const PORT = process.env.PORT || 4000;
 // for fetch bookings all
 app.get('/bookings',async(req,res)=>{
     const userData = await getUserDataFromReq(req);
     res.json(await Booking.find({user:userData.id }).populate('place'));
 });
-app.listen(4000);
+app.listen(PORT, function(err){
+    if (err) console.log("Error in server setup")
+    console.log("Server listening on Port", PORT);
+})
