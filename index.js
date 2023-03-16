@@ -21,10 +21,11 @@ app.use('/uploads',express.static(__dirname+'/uploads'));
 const bycryptSalt = bycrypt.genSaltSync(10);
 const jwtSecret = 'MazidHussainAnsari';
 
-app.use(cors({
-    credentials:true,
-    origin:process.env.ORIGIN,
-}));
+app.use(cors());
+// app.use(cors({
+//     credentials:true,
+//     origin:process.env.ORIGIN,
+// }));
 mongoose.connect(process.env.MONGO_URL);
 
 function getUserDataFromReq(req){
